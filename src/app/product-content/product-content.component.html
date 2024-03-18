@@ -1,0 +1,5 @@
+<app-product-filter (onFilter)="filterChanged($event)"></app-product-filter>
+<app-product-table [products]="selectedProducts" 
+                    [categories]="selectedCategories"
+                    (onRowSelect)="toggleRow($event)">
+</app-product-table>

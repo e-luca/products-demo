@@ -1,0 +1,27 @@
+<select [(ngModel)]="selectedCategory" 
+        (ngModelChange)="selectCategory()">
+    <option value=""></option>
+    @for (category of categories; track $index) {
+        <option [value]="category">{{ "Category: " + category }}</option>
+    }
+</select>
+
+<select [(ngModel)]="selectedBrand"
+        (ngModelChange)="selectBrand()">
+    <option value=""></option>
+    @for (brand of brands; track $index) {
+        <option [value]="brand">{{ "Brand: " + brand }}</option>
+    }
+</select>
+
+<select [(ngModel)]="selectedStock"
+        (ngModelChange)="selectStock()">
+    <option value="-1"></option>
+    @for (stock of stocks; track $index) {
+        <option [value]="stock">{{ "Stock: " + stock }}</option>
+    }
+</select>
+<button type="button" 
+        (click)="resetFilters()">
+    Reset Filters
+</button>

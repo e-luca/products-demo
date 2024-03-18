@@ -1,0 +1,53 @@
+<div class="table" [ngClass]="showDifferentDesign ? 'alternative' : 'main'">
+    <div>
+        <div class="header-row">
+            <button class="change-btn" 
+                    type="button" 
+                    (click)="changeDesign()">
+                        Change Design
+            </button>
+            @for (column of columns; track $index) {
+                <div class="column" 
+                    (click)="expandColumn(column)">
+                    {{ column }}
+                </div>
+            }
+        </div>
+    </div>
+    <div>
+        <div class="row">
+            @for (category of categoryData; track $index) {
+                <div (click)="expandRow(category)" 
+                    class="category-row">
+                    {{ category }}
+
+                    <div>
+                        @if (expanededRows.has(category)) {
+                            <div class="expanded-content">
+                                @for (product of filteredProducts(category); track product.id) {
+                                    <div class="data-row">
+                                        <span [ngClass]="expandedColumns.has('title') ? 'display' : 'hide'">
+                                                {{ product.title }}
+                                        </span>
+                                        <span [ngClass]="expandedColumns.has('price') ? 'display' : 'hide'">
+                                            {{ product.price }}
+                                        </span>
+                                        <span [ngClass]="expandedColumns.has('stock') ? 'display' : 'hide'">
+                                            {{ product.stock }}
+                                        </span>
+                                        <span [ngClass]="expandedColumns.has('brand') ? 'display' : 'hide'">
+                                            {{ product.brand }}
+                                        </span>
+                                        <span [ngClass]="expandedColumns.has('category') ? 'display' : 'hide'">
+                                            {{ product.category }}
+                                        </span>
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
